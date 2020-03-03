@@ -13,6 +13,9 @@ class ModbusServerClient {
     this._responseHandler = new ResponseHandler(this._server, Response)
 
     this._socket.on('data', this._onData.bind(this))
+     this._socket.on('error', err => {
+            debug('socket error', err)
+        })
   }
 
   get socket () {
